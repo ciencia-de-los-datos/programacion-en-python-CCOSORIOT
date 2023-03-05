@@ -25,6 +25,7 @@ def pregunta_01():
     Suma = 0
     for i in Columna2:
         Suma += int(i)
+    Suma
     return Suma
 
 def pregunta_02():
@@ -39,7 +40,6 @@ def pregunta_02():
     Lista_Tuplas = sorted(list(zip(Grupos, Lista_Conteo)))
     Lista_Tuplas
     return Lista_Tuplas
-
 
 def pregunta_03():
     """
