@@ -12,34 +12,33 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 """
 
+#Lectura y limpieza de datos
+def Datos():
+    Data = open('data.csv', 'r').readlines()
+    Data = [z.replace("\n", "") for z in Data]
+    Data = [z.split("\t") for z in Data]
+    return Data
 
 def pregunta_01():
-    """
-    Retorne la suma de la segunda columna.
+    Columna2 = [z[1] for z in Datos()[0:]]
 
-    Rta/
-    214
-
-    """
-    return
-
+    Suma = 0
+    for i in Columna2:
+        Suma += int(i)
+    return Suma
 
 def pregunta_02():
-    """
-    Retorne la cantidad de registros por cada letra de la primera columna como la lista
-    de tuplas (letra, cantidad), ordendas alfabéticamente.
+    Columna1 = [z[0] for z in Datos()[0:]]
 
-    Rta/
-    [
-        ("A", 8),
-        ("B", 7),
-        ("C", 5),
-        ("D", 6),
-        ("E", 14),
-    ]
+    Grupos = list(set(Columna1))
+    Lista_Conteo = []
 
-    """
-    return
+    for i in Grupos:
+        Conteo = Columna1.count(i)
+        Lista_Conteo.append(Conteo)
+    Lista_Tuplas = sorted(list(zip(Grupos, Lista_Conteo)))
+    Lista_Tuplas
+    return Lista_Tuplas
 
 
 def pregunta_03():
