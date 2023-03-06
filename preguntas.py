@@ -11,7 +11,6 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 
 """
-
 #Lectura y limpieza de datos
 def Datos():
     Data = open('data.csv', 'r').readlines()
@@ -19,6 +18,7 @@ def Datos():
     Data = [z.split("\t") for z in Data]
     return Data
 
+#Pregunta 1
 def pregunta_01():
     Columna2 = [z[1] for z in Datos()[0:]]
 
@@ -28,6 +28,7 @@ def pregunta_01():
     Suma
     return Suma
 
+#Pregunta 2
 def pregunta_02():
     Columna1 = [z[0] for z in Datos()[0:]]
 
@@ -41,67 +42,73 @@ def pregunta_02():
     Lista_Tuplas
     return Lista_Tuplas
 
+#Pregunta 3
 def pregunta_03():
-    """
-    Retorne la suma de la columna 2 por cada letra de la primera columna como una lista
-    de tuplas (letra, suma) ordendas alfabeticamente.
+    Tabla1 = sorted([z[:2] for z in Datos()])
+    Columna1 = [z[0] for z in Datos()[0:]]
+    Grupos = sorted(list(set(Columna1)))
 
-    Rta/
-    [
-        ("A", 53),
-        ("B", 36),
-        ("C", 27),
-        ("D", 31),
-        ("E", 67),
-    ]
+    Suma = 0
+    ListaSuma = []
 
-    """
-    return
+    for i in Grupos:
+        Suma = 0
+        for j in Tabla1:    
+            if i[0] == j[0]:
+                Suma += int(j[1])
+        ListaSuma.append(Suma)
+    Lista_Tuplas = sorted(list(zip(Grupos, ListaSuma)))
+    Lista_Tuplas
+    return Lista_Tuplas
 
-
+#Pregunta 4
 def pregunta_04():
-    """
-    La columna 3 contiene una fecha en formato `YYYY-MM-DD`. Retorne la cantidad de
-    registros por cada mes, tal como se muestra a continuación.
+    Columna3 = [z[2] for z in Datos()[0:]]
+    Campos_Fechas = [z.split("-") for z in Columna3]
+    Columna_Mes = [z[1] for z in Campos_Fechas]
 
-    Rta/
-    [
-        ("01", 3),
-        ("02", 4),
-        ("03", 2),
-        ("04", 4),
-        ("05", 3),
-        ("06", 3),
-        ("07", 5),
-        ("08", 6),
-        ("09", 3),
-        ("10", 2),
-        ("11", 2),
-        ("12", 3),
-    ]
+    Grupos = list(set(Columna_Mes))
+    Lista_Conteo = []
 
-    """
-    return
+    for i in Grupos:
+        Conteo = Columna_Mes.count(i)
+        Lista_Conteo.append(Conteo)
+    Lista_Tuplas = sorted(list(zip(Grupos, Lista_Conteo)))
+    Lista_Tuplas
+    return Lista_Tuplas
 
-
+#Pregunta 5
 def pregunta_05():
-    """
-    Retorne una lista de tuplas con el valor maximo y minimo de la columna 2 por cada
-    letra de la columa 1.
+    Tabla1 = sorted([z[:2] for z in Datos()])
+    Columna1 = [z[0] for z in Datos()[0:]]
+    Grupos = sorted(list(set(Columna1)))
 
-    Rta/
-    [
-        ("A", 9, 2),
-        ("B", 9, 1),
-        ("C", 9, 0),
-        ("D", 8, 3),
-        ("E", 9, 1),
-    ]
+    Maximo: int = 0
+    ListaMaximo = []
+    for i in Grupos:
+        Maximo = 0
+        for j in Tabla1:
+            if i[0] == j[0]:
+                if int(j[1]) > Maximo:
+                    Maximo = int(j[1])
+        ListaMaximo.append(Maximo)
 
-    """
-    return
+    Columna2 = [z[1] for z in Datos()[0:]]
+    Minimo = max(Columna2)
+    ListaMinimo = []
+    for i in Grupos:
+        Minimo = int(max(Columna2))
+        for j in Tabla1:
+            if i[0] == j[0]:
+                if int(j[1]) < Minimo:
+                    Minimo = int(j[1])
+        ListaMinimo.append(Minimo)
 
+    Lista_Tuplas = sorted(list(zip(Grupos, ListaMaximo, ListaMinimo)))
+    Lista_Tuplas
+    return Lista_Tuplas
 
+#Pregunta 6
 def pregunta_06():
     """
     La columna 5 codifica un diccionario donde cada cadena de tres letras corresponde a
@@ -126,7 +133,7 @@ def pregunta_06():
     """
     return
 
-
+#Pregunta 7
 def pregunta_07():
     """
     Retorne una lista de tuplas que asocien las columnas 0 y 1. Cada tupla contiene un
@@ -150,7 +157,7 @@ def pregunta_07():
     """
     return
 
-
+#Pregunta 8
 def pregunta_08():
     """
     Genere una lista de tuplas, donde el primer elemento de cada tupla contiene  el valor
@@ -175,7 +182,7 @@ def pregunta_08():
     """
     return
 
-
+#Pregunta 9
 def pregunta_09():
     """
     Retorne un diccionario que contenga la cantidad de registros en que aparece cada
@@ -198,7 +205,7 @@ def pregunta_09():
     """
     return
 
-
+#Pregunta 10
 def pregunta_10():
     """
     Retorne una lista de tuplas contengan por cada tupla, la letra de la columna 1 y la
@@ -219,7 +226,7 @@ def pregunta_10():
     """
     return
 
-
+#Pregunta 11
 def pregunta_11():
     """
     Retorne un diccionario que contengan la suma de la columna 2 para cada letra de la
@@ -240,7 +247,7 @@ def pregunta_11():
     """
     return
 
-
+#Pregunta 12
 def pregunta_12():
     """
     Genere un diccionario que contengan como clave la columna 1 y como valor la suma de
