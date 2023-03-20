@@ -228,24 +228,39 @@ def pregunta_10():
 
 #Pregunta 11
 def pregunta_11():
-    """
-    Retorne un diccionario que contengan la suma de la columna 2 para cada letra de la
-    columna 4, ordenadas alfabeticamente.
+    Columna2 = [z[1] for z in Datos()[0:]]
+    Columna4 = [z[3] for z in Datos()[0:]]
+    Columna4_Dividida = [z.split(",") for z in Columna4]
 
-    Rta/
-    {
-        "a": 122,
-        "b": 49,
-        "c": 91,
-        "d": 73,
-        "e": 86,
-        "f": 134,
-        "g": 35,
-    }
+    Lista_Let = []
+    Lista_Con = []
+    Lista_Group = []
 
+    for i in range(0, len(Columna4_Dividida)):
+        for j in range(0, len(Columna4_Dividida[i])):
+            Lista_Let.append(Columna4_Dividida[i][j])
+            Lista_Let.append(int(Columna2[i]))
+            Lista_Con.append(Lista_Let)
+            Lista_Let = []
+            Lista_Group.append(Columna4_Dividida[i][j])
 
-    """
-    return
+    Grupos = sorted(list(set(Lista_Group)))
+
+    suma = 0
+    Lista_Suma = []
+
+    for i in Grupos:
+        for j in Lista_Con:
+            if i == j[0]:
+                suma += int(j[1])
+        Lista_Suma.append(suma)
+        suma = 0
+
+    Diccionario = {}
+    for i in range(0, len(Grupos)):
+        Diccionario[Grupos[i]] = Lista_Suma[i]
+    
+    return Diccionario
 
 #Pregunta 12
 def pregunta_12():
