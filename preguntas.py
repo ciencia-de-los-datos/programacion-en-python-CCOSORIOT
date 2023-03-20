@@ -110,28 +110,44 @@ def pregunta_05():
 
 #Pregunta 6
 def pregunta_06():
-    """
-    La columna 5 codifica un diccionario donde cada cadena de tres letras corresponde a
-    una clave y el valor despues del caracter `:` corresponde al valor asociado a la
-    clave. Por cada clave, obtenga el valor asociado mas pequeño y el valor asociado mas
-    grande computados sobre todo el archivo.
+    Columna5 = [z[4] for z in Datos()[0:]]
+    Columna5_Dividida = [z.split(",") for z in Columna5]
 
-    Rta/
-    [
-        ("aaa", 1, 9),
-        ("bbb", 1, 9),
-        ("ccc", 1, 10),
-        ("ddd", 0, 9),
-        ("eee", 1, 7),
-        ("fff", 0, 9),
-        ("ggg", 3, 10),
-        ("hhh", 0, 9),
-        ("iii", 0, 9),
-        ("jjj", 5, 17),
-    ]
+    Tabla2 = []
+    for i in range(0, len(Columna5_Dividida)):
+        for j in range(0, len(Columna5_Dividida[i])):
+            Tabla2.append(Columna5_Dividida[i][j].split(":"))
 
-    """
-    return
+    Lista2 = []
+    Lista3 = []
+    for i in Tabla2:
+        Lista2.append(i[0])
+        Lista3.append(i[1])
+
+    Grupos = sorted(list(set(Lista2)))
+
+    Maximo: int = 0
+    ListaMaximo = []
+    for i in Grupos:
+        Maximo = 0
+        for j in Tabla2:
+            if i == j[0]:
+                if int(j[1]) > Maximo:
+                    Maximo = int(j[1])
+        ListaMaximo.append(Maximo)
+
+    Minimo = max(Lista3)
+    ListaMinimo = []
+    for i in Grupos:
+        Minimo = int(max(Lista3))
+        for j in Tabla2:
+            if i == j[0]:
+                if int(j[1]) < Minimo:
+                    Minimo = int(j[1])
+        ListaMinimo.append(Minimo)
+
+    Lista_Tuplas = sorted(list(zip(Grupos, ListaMinimo, ListaMaximo)))
+    return Lista_Tuplas
 
 #Pregunta 7
 def pregunta_07():
