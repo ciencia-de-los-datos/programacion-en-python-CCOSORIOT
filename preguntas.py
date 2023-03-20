@@ -183,11 +183,10 @@ def pregunta_08():
         for j in Tabla1:
             if int(i) == int(j[1]):
                 Lista_Concat.append(j[0])   
-        Lista_Total.append(Lista_Concat)
+        Lista_Total.append(sorted(list(set(Lista_Concat))))
         Lista_Concat = []
 
     Lista_Tuplas = sorted(list(zip(Grupos, Lista_Total)))
-    Lista_Tuplas
     return Lista_Tuplas
 
 #Pregunta 9
