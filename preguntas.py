@@ -214,24 +214,17 @@ def pregunta_09():
 
 #Pregunta 10
 def pregunta_10():
-    """
-    Retorne una lista de tuplas contengan por cada tupla, la letra de la columna 1 y la
-    cantidad de elementos de las columnas 4 y 5.
+    Columna1 = [z[0] for z in Datos()[0:]]
+    Columna4 = [z[3] for z in Datos()[0:]]
+    Columna5 = [z[4] for z in Datos()[0:]]
+    Columna4_Dividida = [z.split(",") for z in Columna4]
+    Columna5_Dividida = [z.split(",") for z in Columna5]
 
-    Rta/
-    [
-        ("E", 3, 5),
-        ("A", 3, 4),
-        ("B", 4, 4),
-        ...
-        ("C", 4, 3),
-        ("E", 2, 3),
-        ("E", 3, 3),
-    ]
+    Lista_Conteo4 = [len(z) for z in Columna4_Dividida ]
+    Lista_Conteo5 = [len(z) for z in Columna5_Dividida ]
 
-
-    """
-    return
+    Lista_Tuplas = list(zip(Columna1, Lista_Conteo4, Lista_Conteo5))
+    return Lista_Tuplas
 
 #Pregunta 11
 def pregunta_11():
