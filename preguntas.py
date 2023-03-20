@@ -171,28 +171,24 @@ def pregunta_07():
 
 #Pregunta 8
 def pregunta_08():
-    """
-    Genere una lista de tuplas, donde el primer elemento de cada tupla contiene  el valor
-    de la segunda columna; la segunda parte de la tupla es una lista con las letras
-    (ordenadas y sin repetir letra) de la primera  columna que aparecen asociadas a dicho
-    valor de la segunda columna.
+    Tabla1 = [z[:2] for z in Datos()]
+    Columna2 = [z[1] for z in Datos()[0:]]
+    Grupos = list(set(Columna2))
+    Grupos = [int(z) for z in Grupos]
 
-    Rta/
-    [
-        (0, ["C"]),
-        (1, ["B", "E"]),
-        (2, ["A", "E"]),
-        (3, ["A", "B", "D", "E"]),
-        (4, ["B", "E"]),
-        (5, ["B", "C", "D", "E"]),
-        (6, ["A", "B", "C", "E"]),
-        (7, ["A", "C", "D", "E"]),
-        (8, ["A", "B", "D", "E"]),
-        (9, ["A", "B", "C", "E"]),
-    ]
+    Lista_Concat = []
+    Lista_Total = []
 
-    """
-    return
+    for i in Grupos:
+        for j in Tabla1:
+            if int(i) == int(j[1]):
+                Lista_Concat.append(j[0])   
+        Lista_Total.append(Lista_Concat)
+        Lista_Concat = []
+
+    Lista_Tuplas = sorted(list(zip(Grupos, Lista_Total)))
+    Lista_Tuplas
+    return Lista_Tuplas
 
 #Pregunta 9
 def pregunta_09():
