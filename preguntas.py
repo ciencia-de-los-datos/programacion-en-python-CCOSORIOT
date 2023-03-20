@@ -264,18 +264,14 @@ def pregunta_11():
 
 #Pregunta 12
 def pregunta_12():
-    """
-    Genere un diccionario que contengan como clave la columna 1 y como valor la suma de
-    los valores de la columna 5 sobre todo el archivo.
+    diccionario = {}
+    for i in Datos():
+        Columna5 = i[4].split(',')
+        if i[0] in diccionario.keys():
+            diccionario[i[0]] = diccionario[i[0]] + sum([int(z.split(':')[1]) for z in Columna5])
+        else:
+            diccionario[i[0]] = sum([int(z.split(':')[1]) for z in Columna5])
 
-    Rta/
-    {
-        'A': 177,
-        'B': 187,
-        'C': 114,
-        'D': 136,
-        'E': 324
-    }
-
-    """
-    return
+    resultado = list(diccionario.items())
+    resultado = dict(sorted(resultado, key=lambda tup: tup[0]))
+    return resultado
