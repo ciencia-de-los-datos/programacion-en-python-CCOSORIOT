@@ -151,27 +151,23 @@ def pregunta_06():
 
 #Pregunta 7
 def pregunta_07():
-    """
-    Retorne una lista de tuplas que asocien las columnas 0 y 1. Cada tupla contiene un
-    valor posible de la columna 2 y una lista con todas las letras asociadas (columna 1)
-    a dicho valor de la columna 2.
+    Tabla1 = [z[:2] for z in Datos()]
+    Columna2 = [z[1] for z in Datos()[0:]]
+    Grupos = list(set(Columna2))
+    Grupos = [int(z) for z in Grupos]
 
-    Rta/
-    [
-        (0, ["C"]),
-        (1, ["E", "B", "E"]),
-        (2, ["A", "E"]),
-        (3, ["A", "B", "D", "E", "E", "D"]),
-        (4, ["E", "B"]),
-        (5, ["B", "C", "D", "D", "E", "E", "E"]),
-        (6, ["C", "E", "A", "B"]),
-        (7, ["A", "C", "E", "D"]),
-        (8, ["E", "D", "E", "A", "B"]),
-        (9, ["A", "B", "E", "A", "A", "C"]),
-    ]
+    Lista_Concat = []
+    Lista_Total = []
 
-    """
-    return
+    for i in Grupos:
+        for j in Tabla1:
+            if int(i) == int(j[1]):
+                Lista_Concat.append(j[0])   
+        Lista_Total.append(Lista_Concat)
+        Lista_Concat = []
+
+    Lista_Tuplas = sorted(list(zip(Grupos, Lista_Total)))
+    return Lista_Tuplas
 
 #Pregunta 8
 def pregunta_08():
