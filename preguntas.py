@@ -191,26 +191,26 @@ def pregunta_08():
 
 #Pregunta 9
 def pregunta_09():
-    """
-    Retorne un diccionario que contenga la cantidad de registros en que aparece cada
-    clave de la columna 5.
+    Columna5 = [z[4] for z in Datos()[0:]]
+    Columna5_Dividida = [z.split(",") for z in Columna5]
 
-    Rta/
-    {
-        "aaa": 13,
-        "bbb": 16,
-        "ccc": 23,
-        "ddd": 23,
-        "eee": 15,
-        "fff": 20,
-        "ggg": 13,
-        "hhh": 16,
-        "iii": 18,
-        "jjj": 18,
-    }
+    Tabla2 = []
+    for i in range(0, len(Columna5_Dividida)):
+        for j in range(0, len(Columna5_Dividida[i])):
+            Tabla2.append(Columna5_Dividida[i][j].split(":"))
 
-    """
-    return
+    Lista2 = []
+    for i in Tabla2:
+        Lista2.append(i[0])
+
+    Grupos = sorted(list(set(Lista2)))
+
+    Diccionario = {}
+
+    for i in Grupos:
+        Conteo = Lista2.count(i)
+        Diccionario[i] = Conteo
+    return Diccionario
 
 #Pregunta 10
 def pregunta_10():
